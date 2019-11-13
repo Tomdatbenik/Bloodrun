@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class Loading : MonoBehaviour
 {
-    public Connection connection;
+    private Connection connection;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,29 +18,24 @@ public class Loading : MonoBehaviour
     // Update is called once per frame
     void Update()
     {       
-        if(connection.LastReceivedUDPMessage != null)
+        if (connection.game != null)
         {
-            Game game = Game.Fromjson(connection.LastReceivedUDPMessage);
-            if (game != null)
-            {
-                bool allconnected = true;
+            bool allconnected = true;
 
-                foreach(PlayerInfo player in game.GetPlayers)
+            foreach(PlayerInfo player in connection.game.GetPlayers)
+            {
+                if(player.username != "null")
                 {
-                    if(player.username != "null")
+                    if (!player.Connected)
                     {
-                        if (!player.Connected)
-                        {
-                            allconnected = false;
-                        }
+                        allconnected = false;
                     }
                 }
+            }
 
-                if(allconnected)
-                {
-                    SceneManager.LoadScene("Game", LoadSceneMode.Single);
-                }
-
+            if(allconnected)
+            {
+                SceneManager.LoadScene("Game", LoadSceneMode.Single);
             }
         }
    

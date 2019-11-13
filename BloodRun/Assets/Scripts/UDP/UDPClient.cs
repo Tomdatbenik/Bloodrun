@@ -15,7 +15,7 @@ public class UDPClient : ScriptableObject
         /// <summary>Static reference to the instance of our DataManager</summary>
     public static Connection instance;
 
-    public UDPClient()
+    public UDPClient() : base()
     {
         IP = "";
         var host = Dns.GetHostEntry(Dns.GetHostName());

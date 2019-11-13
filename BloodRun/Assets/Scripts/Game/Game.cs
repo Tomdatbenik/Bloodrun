@@ -37,8 +37,6 @@ public class Game
 
             for (int i = 1; i < 5; i++)
             {
-                Debug.Log(Jplayers.SelectToken("player_" + i));
-
                 JToken Jplayer = Jplayers.SelectToken("player_" + i);
                 PlayerInfo player = PlayerInfo.FromJson(Jplayer);
                 game.players.Add(player);

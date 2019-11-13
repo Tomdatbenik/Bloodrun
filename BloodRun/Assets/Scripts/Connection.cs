@@ -14,6 +14,8 @@ public class Connection : MonoBehaviour
     Thread receiveThread;
 
     public Message LastReceivedUDPMessage;
+    public Game game;
+    public string Username;
 
     private void Start()
     {
@@ -86,7 +88,6 @@ public class Connection : MonoBehaviour
 
     private void recvUDP(IAsyncResult res)
     {
-        Debug.Log(res);
         IPEndPoint RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, 10922);
         byte[] received = this.uDPClient.client.EndReceive(res, ref RemoteIpEndPoint);
 
@@ -96,8 +97,7 @@ public class Connection : MonoBehaviour
         //SetGame to message content
         if (msg != null)
         {
-            LastReceivedUDPMessage = msg;
-            Debug.Log(LastReceivedUDPMessage.ToJson());
+            game = Game.Fromjson(msg);
         }
 
         this.uDPClient.client.BeginReceive(new AsyncCallback(recvUDP), null);
