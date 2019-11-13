@@ -16,6 +16,7 @@ public class Connection : MonoBehaviour
     public Message LastReceivedUDPMessage;
     public Game game;
     public string Username;
+    public string ServerIp;
 
     private void Start()
     {
@@ -27,7 +28,7 @@ public class Connection : MonoBehaviour
 
     public void StartTCPConnection()
     {
-        tcpConnection = new TCPConnection();
+        tcpConnection = new TCPConnection(ServerIp);
         tcpConnection.Connect();
         tcpWriter = new TCPWriter(tcpConnection);
     }

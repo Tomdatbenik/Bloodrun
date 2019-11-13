@@ -8,11 +8,14 @@ public class TCPConnection
     public NetworkStream stream;
     public TcpClient client;
     readonly int port = 10923;
-    readonly string server = "Localhost";
+    private string server = "Localhost";
 
-    public TCPConnection()
+    public TCPConnection(string server)
     {
-
+        if(server != null)
+        {
+            this.server = server;
+        }
     }
 
     public void Connect()
