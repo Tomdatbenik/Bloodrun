@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using System.Threading;
 using UnityEngine;
 
 public class Connection : MonoBehaviour
@@ -8,6 +11,17 @@ public class Connection : MonoBehaviour
     public TCPConnection tcpConnection;
     TCPWriter tcpWriter;
     public UDPClient uDPClient;
+    Thread receiveThread;
+
+    public Message LastReceivedUDPMessage;
+
+    private void Start()
+    {
+        receiveThread = new Thread(
+        new ThreadStart(ReceiveDataUDP));
+        receiveThread.IsBackground = true;
+        receiveThread.Start();
+    }
 
     public void StartTCPConnection()
     {
@@ -57,4 +71,36 @@ public class Connection : MonoBehaviour
 
         StopTCPConnection();
     }
+    //CallBack
+    private void ReceiveDataUDP()
+    {
+        try
+        {
+            this.uDPClient.client.BeginReceive(new AsyncCallback(recvUDP), null);
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.ToString());
+        }
+    }
+
+    private void recvUDP(IAsyncResult res)
+    {
+        Debug.Log(res);
+        IPEndPoint RemoteIpEndPoint = new IPEndPoint(IPAddress.Any, 10922);
+        byte[] received = this.uDPClient.client.EndReceive(res, ref RemoteIpEndPoint);
+
+        //Process codes
+        Message msg = Message.FromJson(System.Text.Encoding.UTF8.GetString(Compressor.Decompress(received)));
+
+        //SetGame to message content
+        if (msg != null)
+        {
+            LastReceivedUDPMessage = msg;
+            Debug.Log(LastReceivedUDPMessage.ToJson());
+        }
+
+        this.uDPClient.client.BeginReceive(new AsyncCallback(recvUDP), null);
+    }
+
 }
