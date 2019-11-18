@@ -45,7 +45,7 @@ public class Connection : MonoBehaviour
 
     public void ConnectUDPSender()
     {
-        this.uDPClient.client.Connect("Localhost", 10922);
+        this.uDPClient.client.Connect(ServerIp, 10922);
     }
 
     /// <summary>Static reference to the instance of our DataManager</summary>
@@ -73,7 +73,7 @@ public class Connection : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        Message message = new Message("Tomdatbenik", "none", MessageType.Disconnect);
+        Message message = new Message(Username, "none", MessageType.Disconnect);
 
         instance.SendTCPMessage(message);
 

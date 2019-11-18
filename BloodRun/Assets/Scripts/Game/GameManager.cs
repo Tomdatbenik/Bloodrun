@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -54,7 +55,7 @@ public class GameManager : MonoBehaviour
                 //look in properties who the player is.
                 PlayerUsername username = gameObject.GetComponent(typeof(PlayerUsername)) as PlayerUsername;
 
-                if (username.Username != player.username)
+                if (username.Username != connection.Username)
                 {
                     Rigidbody rb = gameObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
 
