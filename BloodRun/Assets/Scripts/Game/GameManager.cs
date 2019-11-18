@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         foreach (PlayerInfo player in connection.game.GetPlayers)
         {
