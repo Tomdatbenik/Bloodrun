@@ -9,6 +9,12 @@ public class PlayerInfo
     public TransformInfo transform;
     public bool Connected = false;
 
+    public PlayerInfo()
+    {
+        username = "";
+        transform = new TransformInfo();
+    }
+
     public static PlayerInfo FromJson(JToken jToken)
     {
         PlayerInfo player = new PlayerInfo();
@@ -18,5 +24,10 @@ public class PlayerInfo
         player.Connected = (bool)jToken.SelectToken("connected");
 
         return player;
+    }
+
+    public string ToJson()
+    {
+        return Newtonsoft.Json.JsonConvert.SerializeObject(this);
     }
 }

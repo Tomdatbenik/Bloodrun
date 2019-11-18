@@ -8,6 +8,6 @@ public enum MessageType
     Connect = 1,
     UDPRequest = 4,
     Ping = 0,
-    Disconnect = 2
-
+    Disconnect = 2,
+    Move = 3
 }

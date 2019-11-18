@@ -17,7 +17,6 @@ public class TCPWriter
         //Send write
         if (this.connection.stream.CanWrite)
         {
-            string test = JsonConvert.SerializeObject(message);
             byte[] data = Compressor.Compress(System.Text.Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(message)));
             this.connection.stream.Write(data, 0, data.Length);
             this.connection.stream.Flush();

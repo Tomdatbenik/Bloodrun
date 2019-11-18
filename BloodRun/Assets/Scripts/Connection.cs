@@ -43,6 +43,11 @@ public class Connection : MonoBehaviour
         tcpWriter.Send(message);
     }
 
+    public void ConnectUDPSender()
+    {
+        this.uDPClient.client.Connect("Localhost", 10922);
+    }
+
     /// <summary>Static reference to the instance of our DataManager</summary>
     public static Connection instance;
 

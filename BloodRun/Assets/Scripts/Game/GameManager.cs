@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         foreach (PlayerInfo player in connection.game.GetPlayers)
         {
@@ -54,17 +54,19 @@ public class GameManager : MonoBehaviour
                 //look in properties who the player is.
                 PlayerUsername username = gameObject.GetComponent(typeof(PlayerUsername)) as PlayerUsername;
 
-                if (username.Username == player.username)
+                if (username.Username != player.username)
                 {
                     Rigidbody rb = gameObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
 
                     Vector3 location = new Vector3(float.Parse(player.transform.location.x), float.Parse(player.transform.location.y), float.Parse(player.transform.location.z)).normalized;
+                    rb.velocity = Vector3.zero;
+                    rb.MovePosition(location);
+                    gameObject.transform.position = location;
+                    rb.velocity = Vector3.zero;
+                    rb.rotation = new Quaternion(float.Parse(player.transform.rotation.x), float.Parse(player.transform.rotation.y), float.Parse(player.transform.rotation.z), float.Parse(player.transform.rotation.w));
 
+                    Debug.Log(gameObject);
                     Debug.Log(location);
-
-                    rb.position = new Vector3(location.x,location.y,location.z);
-                    Debug.Log(rb.transform.position);
-                    rb.MoveRotation(new Quaternion(float.Parse(player.transform.rotation.x), float.Parse(player.transform.rotation.y), float.Parse(player.transform.rotation.z), float.Parse(player.transform.rotation.w)));
                 }
             }
         }

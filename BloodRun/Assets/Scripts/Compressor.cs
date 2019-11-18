@@ -10,6 +10,7 @@ public class Compressor
         {
             dstream.Write(data, 0, data.Length);
         }
+
         return output.ToArray();
     }
 

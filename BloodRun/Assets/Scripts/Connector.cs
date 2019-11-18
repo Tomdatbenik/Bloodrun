@@ -21,6 +21,7 @@ public class Connector : MonoBehaviour
 
         uDPClient = new UDPClient();
         connection.uDPClient = uDPClient;
+        //connection.ConnectUDPSender();
 
         Message message = new Message(connection.Username, uDPClient.IP + ":" + uDPClient.port.ToString(), MessageType.Connect);
 
