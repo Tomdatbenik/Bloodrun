@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour
     {
         foreach (PlayerInfo player in connection.game.GetPlayers)
         {
+
+
+
             foreach(GameObject gameObject in players)
             {
                 //look in properties who the player is.
@@ -57,13 +60,18 @@ public class GameManager : MonoBehaviour
 
                 if (username.Username == player.username && username.Username != connection.Username)
                 {
+                    Debug.Log(float.Parse(player.transform.location.y));
+                    Debug.Log(float.Parse(player.transform.location.x));
+
+
                     Rigidbody rb = gameObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
 
                     Vector3 location = new Vector3(float.Parse(player.transform.location.x), float.Parse(player.transform.location.y), float.Parse(player.transform.location.z)).normalized;
-                    rb.velocity = Vector3.zero;
+                    Debug.Log(username.Username + ":" + location);
+
+
                     rb.MovePosition(location);
                     gameObject.transform.position = location;
-                    rb.velocity = Vector3.zero;
                     rb.rotation = new Quaternion(float.Parse(player.transform.rotation.x), float.Parse(player.transform.rotation.y), float.Parse(player.transform.rotation.z), float.Parse(player.transform.rotation.w));
                 }
             }

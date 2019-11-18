@@ -53,6 +53,15 @@ public class PlayerMovement : MonoBehaviour
             player.transform.rotation.w = gameObject.transform.rotation.w.ToString();
 
 
+            player.transform.location.x.Replace(".", ",");
+            player.transform.location.y.Replace(".", ",");
+            player.transform.location.z.Replace(".", ",");
+
+            player.transform.rotation.x.Replace(".", ",");
+            player.transform.rotation.y.Replace(".", ",");
+            player.transform.rotation.z.Replace(".", ",");
+            player.transform.rotation.w.Replace(".", ",");
+
             Message message = new Message(connection.Username, player.ToJson(), MessageType.Move);
             byte[] data = Compressor.Compress(System.Text.Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(message)));
 
