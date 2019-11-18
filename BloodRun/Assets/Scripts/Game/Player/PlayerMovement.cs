@@ -36,23 +36,27 @@ public class PlayerMovement : MonoBehaviour
 
     public void SendDataToServer()
     {
-        PlayerInfo player = new PlayerInfo();
+        PlayerUsername username = gameObject.GetComponent(typeof(PlayerUsername)) as PlayerUsername;
+        if (connection.Username == username.Username)
+        {
+            PlayerInfo player = new PlayerInfo();
 
-        player.username = connection.Username;
+            player.username = connection.Username;
 
-        player.transform.location.x = gameObject.transform.position.x.ToString();
-        player.transform.location.y = gameObject.transform.position.y.ToString();
-        player.transform.location.z = gameObject.transform.position.z.ToString();
+            player.transform.location.x = gameObject.transform.position.x.ToString();
+            player.transform.location.y = gameObject.transform.position.y.ToString();
+            player.transform.location.z = gameObject.transform.position.z.ToString();
 
-        player.transform.rotation.x = gameObject.transform.rotation.x.ToString();
-        player.transform.rotation.y = gameObject.transform.rotation.y.ToString();
-        player.transform.rotation.z = gameObject.transform.rotation.z.ToString();
-        player.transform.rotation.w = gameObject.transform.rotation.w.ToString();
+            player.transform.rotation.x = gameObject.transform.rotation.x.ToString();
+            player.transform.rotation.y = gameObject.transform.rotation.y.ToString();
+            player.transform.rotation.z = gameObject.transform.rotation.z.ToString();
+            player.transform.rotation.w = gameObject.transform.rotation.w.ToString();
 
 
-        Message message = new Message(connection.Username, player.ToJson(), MessageType.Move);
-        byte[] data = Compressor.Compress(System.Text.Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(message)));
+            Message message = new Message(connection.Username, player.ToJson(), MessageType.Move);
+            byte[] data = Compressor.Compress(System.Text.Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(message)));
 
-        connection.uDPClient.client.Send(data, data.Length, connection.ServerIp, 10922);
+            connection.uDPClient.client.Send(data, data.Length, connection.ServerIp, 10922);
+        }
     }
 }
