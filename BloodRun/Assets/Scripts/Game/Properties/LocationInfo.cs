@@ -31,6 +31,10 @@ public class LocationInfo
         location.y = (string)token.SelectToken("y");
         location.z = (string)token.SelectToken("z");
 
+        location.x.Replace(".", ",");
+        location.y.Replace(".", ",");
+        location.z.Replace(".", ",");
+
         return location;
     }
 }
