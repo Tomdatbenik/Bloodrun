@@ -58,9 +58,9 @@ public class GameManager : MonoBehaviour
 
                 if (username.Username == player.username && username.Username != connection.Username)
                 {
-                    float x = float.Parse(player.transform.location.x, CultureInfo.CurrentCulture);
-                    float y = float.Parse(player.transform.location.y, CultureInfo.CurrentCulture);
-                    float z = float.Parse(player.transform.location.z, CultureInfo.CurrentCulture);
+                    float x = float.Parse(player.transform.location.x, CultureInfo.InvariantCulture);
+                    float y = float.Parse(player.transform.location.y, CultureInfo.InvariantCulture);
+                    float z = float.Parse(player.transform.location.z, CultureInfo.InvariantCulture);
 
                     Rigidbody rb = gameObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
 
