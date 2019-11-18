@@ -63,22 +63,10 @@ public class GameManager : MonoBehaviour
         
                     CultureInfo ci = CultureInfo.CurrentCulture;
 
-                    float x = 0;
-                    float y = 0;
-                    float z = 0;
+                    float x = float.Parse(player.transform.location.x, new CultureInfo("en-GB").NumberFormat);
+                    float y = float.Parse(player.transform.location.y, new CultureInfo("en-GB").NumberFormat);
+                    float z = float.Parse(player.transform.location.z, new CultureInfo("en-GB").NumberFormat);
 
-                    if(ci.IetfLanguageTag == "nl-NL")
-                    {
-                        x = float.Parse(player.transform.location.x, new CultureInfo("en-GB", true));
-                        y = float.Parse(player.transform.location.y, new CultureInfo("en-GB", true));
-                        z = float.Parse(player.transform.location.z, new CultureInfo("en-GB", true));
-                    }
-                    else
-                    {
-                        x = float.Parse(player.transform.location.x, new CultureInfo("nl", true));
-                        y = float.Parse(player.transform.location.y, new CultureInfo("nl", true));
-                        z = float.Parse(player.transform.location.z, new CultureInfo("nl", true));
-                    }
 
                     Rigidbody rb = gameObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
 
