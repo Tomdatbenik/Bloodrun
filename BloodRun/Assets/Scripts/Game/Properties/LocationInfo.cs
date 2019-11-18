@@ -34,9 +34,9 @@ public class LocationInfo
 
         if(CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator == ",")
         {
-            location.x.Replace(".", ",");
-            location.y.Replace(".", ",");
-            location.z.Replace(".", ",");
+            location.x.Replace(",", ".");
+            location.y.Replace(",", ".");
+            location.z.Replace(",", ".");
         }
 
         return location;
