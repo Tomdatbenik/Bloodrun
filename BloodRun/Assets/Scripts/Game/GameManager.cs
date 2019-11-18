@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -60,15 +61,13 @@ public class GameManager : MonoBehaviour
 
                 if (username.Username == player.username && username.Username != connection.Username)
                 {
-                    Debug.Log(float.Parse(player.transform.location.y));
-                    Debug.Log(float.Parse(player.transform.location.x));
-
+                    float x = float.Parse(player.transform.location.x, CultureInfo.InvariantCulture);
+                    float y = float.Parse(player.transform.location.y, CultureInfo.InvariantCulture);
+                    float z = float.Parse(player.transform.location.z, CultureInfo.InvariantCulture);
 
                     Rigidbody rb = gameObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
 
-                    Vector3 location = new Vector3(float.Parse(player.transform.location.x), float.Parse(player.transform.location.y), float.Parse(player.transform.location.z)).normalized;
-                    Debug.Log(username.Username + ":" + location);
-
+                    Vector3 location = new Vector3(x, y, z);
 
                     rb.MovePosition(location);
                     gameObject.transform.position = location;
