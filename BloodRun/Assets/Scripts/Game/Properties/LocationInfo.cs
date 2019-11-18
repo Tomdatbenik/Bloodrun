@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 
 public class LocationInfo
@@ -30,10 +31,6 @@ public class LocationInfo
         location.x = (string)token.SelectToken("x");
         location.y = (string)token.SelectToken("y");
         location.z = (string)token.SelectToken("z");
-
-        location.x.Replace(".", ",");
-        location.y.Replace(".", ",");
-        location.z.Replace(".", ",");
 
         return location;
     }
