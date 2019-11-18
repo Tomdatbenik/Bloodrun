@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
                 //look in properties who the player is.
                 PlayerUsername username = gameObject.GetComponent(typeof(PlayerUsername)) as PlayerUsername;
 
-                if (username.Username != connection.Username)
+                if (username.Username == player.username)
                 {
                     Rigidbody rb = gameObject.GetComponent(typeof(Rigidbody)) as Rigidbody;
 
@@ -65,9 +65,6 @@ public class GameManager : MonoBehaviour
                     gameObject.transform.position = location;
                     rb.velocity = Vector3.zero;
                     rb.rotation = new Quaternion(float.Parse(player.transform.rotation.x), float.Parse(player.transform.rotation.y), float.Parse(player.transform.rotation.z), float.Parse(player.transform.rotation.w));
-
-                    Debug.Log(gameObject);
-                    Debug.Log(location);
                 }
             }
         }
