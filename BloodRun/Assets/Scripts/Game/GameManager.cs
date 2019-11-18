@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
 
                 if (username.Username == player.username && username.Username != connection.Username)
                 {
-                    CultureInfo ci = new CultureInfo("en-GB");
+                    CultureInfo ci = new CultureInfo("kk");
 
                     float x = float.Parse(player.transform.location.x, NumberStyles.Any ,ci);
                     float y = float.Parse(player.transform.location.y, NumberStyles.Any, ci);
