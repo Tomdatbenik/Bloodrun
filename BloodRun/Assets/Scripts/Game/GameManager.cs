@@ -9,11 +9,17 @@ public class GameManager : MonoBehaviour
 
     public GameObject Playerprefab;
 
+    public GameObject AlwaysActiveTrap;
+
+
     public List<GameObject> players;
+    public List<GameObject> traps;
     // Start is called before the first frame update
     void Start()
     {
         players = new List<GameObject>();
+        traps = new List<GameObject>();
+
         connection = (Connection)FindObjectOfType(typeof(Connection));
 
         foreach(PlayerInfo player in connection.game.GetPlayers)
@@ -42,6 +48,19 @@ public class GameManager : MonoBehaviour
 
                 players.Add(gameObject);
             }
+        }
+
+        foreach (TrapInfo trap in connection.game.GetTraps)
+        {
+            GameObject gameObject = AlwaysActiveTrap;
+
+            gameObject.transform.position = new Vector3(float.Parse(trap.transform.location.x), float.Parse(trap.transform.location.y), float.Parse(trap.transform.location.z));
+            gameObject.transform.rotation = new Quaternion(float.Parse(trap.transform.rotation.x), float.Parse(trap.transform.rotation.y), float.Parse(trap.transform.rotation.z), float.Parse(trap.transform.rotation.w));
+            gameObject.transform.localScale = new Vector3(float.Parse(trap.scale.x), float.Parse(trap.scale.y), float.Parse(trap.scale.z));
+
+            gameObject = Instantiate(gameObject);
+
+            traps.Add(gameObject);
         }
     }
 

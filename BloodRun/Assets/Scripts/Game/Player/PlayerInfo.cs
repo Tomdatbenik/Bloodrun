@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,7 +14,7 @@ public class PlayerInfo
         transform = new TransformInfo();
     }
 
-    public static PlayerInfo FromJson(JToken jToken)
+    public static PlayerInfo FromJson(Newtonsoft.Json.Linq.JToken jToken)
     {
         PlayerInfo player = new PlayerInfo();
 

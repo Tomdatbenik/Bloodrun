@@ -50,7 +50,6 @@ public class Game
             }
 
             IEnumerable<JToken> traps = jObject.SelectToken("traps");
-
             foreach (JToken item in traps)
             {
                 game.traps.Add(TrapInfo.FromJson(item));
@@ -61,7 +60,7 @@ public class Game
         }
         catch (Exception ex)
         {
-            Debug.Log(ex.Message);
+            Debug.Log(ex);
             return null;
         }
     }

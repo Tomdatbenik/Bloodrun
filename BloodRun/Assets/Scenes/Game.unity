@@ -309,6 +309,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Playerprefab: {fileID: 3172551911682876206, guid: 694aedba097fe604990cddff3d3a0472,
     type: 3}
+  AlwaysActiveTrap: {fileID: 2989794007762664110, guid: 027363c9765120f4ca9085e52837b1e8,
+    type: 3}
+  players: []
+  traps: []
 --- !u!1 &1611965610
 GameObject:
   m_ObjectHideFlags: 0
