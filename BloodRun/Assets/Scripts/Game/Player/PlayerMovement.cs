@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
             player.transform.rotation.z = gameObject.transform.rotation.z.ToString().Replace(".", ",");
             player.transform.rotation.w = gameObject.transform.rotation.w.ToString().Replace(".", ",");
 
-            Message message = new Message(connection.Username, player.ToJson(), MessageType.Move);
+            Message message = new Message(connection.Username, player.ToJson(), MessageTypes.Move);
             byte[] data = Compressor.Compress(System.Text.Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(message)));
 
             connection.uDPClient.client.Send(data, data.Length, connection.ServerIp, 10922);

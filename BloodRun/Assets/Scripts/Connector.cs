@@ -23,7 +23,7 @@ public class Connector : MonoBehaviour
         connection.uDPClient = uDPClient;
         //connection.ConnectUDPSender();
 
-        Message message = new Message(connection.Username, uDPClient.IP + ":" + uDPClient.port.ToString(), MessageType.Connect);
+        Message message = new Message(connection.Username, uDPClient.IP + ":" + uDPClient.port.ToString(), MessageTypes.Connect);
 
         connection.SendTCPMessage(message);
 
@@ -39,7 +39,7 @@ public class Connector : MonoBehaviour
         byte[] data = Compressor.Decompress(bytes);
         Message msg = Message.FromJson(Encoding.ASCII.GetString(data, 0, data.Length));
 
-        if (msg.getType() == MessageType.Connect)
+        if (msg.getType() == MessageTypes.Connect)
         {
             SceneManager.LoadScene("Loading", LoadSceneMode.Single);
         }
@@ -74,7 +74,7 @@ public class Connector : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        Message message = new Message(connection.Username, "none", MessageType.Disconnect);
+        Message message = new Message(connection.Username, "none", MessageTypes.Disconnect);
 
         connection.SendTCPMessage(message);
 

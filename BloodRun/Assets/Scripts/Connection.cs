@@ -73,7 +73,7 @@ public class Connection : MonoBehaviour
 
     void OnApplicationQuit()
     {
-        Message message = new Message(Username, "none", MessageType.Disconnect);
+        Message message = new Message(Username, "none", MessageTypes.Disconnect);
 
         instance.SendTCPMessage(message);
 

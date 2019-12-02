@@ -32,7 +32,7 @@ public class LocationInfo
         location.y = (string)token.SelectToken("y");
         location.z = (string)token.SelectToken("z");
 
-        if(CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator == ".")
+        if(CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator == ",")
         {
             location.x = location.x.Replace(",", ".");
             location.y = location.y.Replace(",", ".");

@@ -7,7 +7,7 @@ public class Message
 {
     public string sender;
     public string content;
-    public MessageType type;
+    public MessageTypes type;
 
     //region Getters and Setters
     public string getContent()
@@ -20,12 +20,12 @@ public class Message
         this.content = content;
     }
 
-    public MessageType getType()
+    public MessageTypes getType()
     {
         return type;
     }
 
-    public void setType(MessageType type)
+    public void setType(MessageTypes type)
     {
         this.type = type;
     }
@@ -34,10 +34,10 @@ public class Message
     public Message()
     {
         content = "";
-        type = MessageType.Connect;
+        type = MessageTypes.Connect;
     }
 
-    public Message(string sender,string content, MessageType type)
+    public Message(string sender,string content, MessageTypes type)
     {
         this.sender = sender;
         this.content = content;

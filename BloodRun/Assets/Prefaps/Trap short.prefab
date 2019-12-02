@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 8373286707130727846}
   - component: {fileID: 8373286707130727833}
   - component: {fileID: 8373286707130727832}
-  - component: {fileID: 8373286707130727844}
   m_Layer: 0
-  m_Name: Trap
+  m_Name: Trap short
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8373286707130727835}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.8, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
@@ -93,17 +92,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8373286707130727844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8373286707130727835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 891c4b144bcd7f74b8f7fe2c616f520f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Active: {fileID: 2100000, guid: 26cb0fb5a69cac941942eda43aaa6d5c, type: 2}
-  Deactive: {fileID: 2100000, guid: 7ab9eeefe7749774c8525c09a73351da, type: 2}
