@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public GameObject RotateTrap;
     public GameObject Spiketrap;
 
+    public List<Material> playercolors;
+
     public CinemachineVirtualCamera cam;
 
 
@@ -29,7 +31,7 @@ public class GameManager : MonoBehaviour
         traps = new List<GameObject>();
 
         connection = (Connection)FindObjectOfType(typeof(Connection));
-
+        int playernumber = 0;
         foreach(PlayerInfo player in connection.game.GetPlayers)
         {
             GameObject gameObject = Playerprefab;
@@ -59,6 +61,8 @@ public class GameManager : MonoBehaviour
 
                 gameObject.transform.position = new Vector3(float.Parse(player.transform.location.x), float.Parse(player.transform.location.y), float.Parse(player.transform.location.z));
                 gameObject.transform.rotation = new Quaternion(float.Parse(player.transform.rotation.x), float.Parse(player.transform.rotation.y), float.Parse(player.transform.rotation.z), float.Parse(player.transform.rotation.w));
+
+
 
                 PlayerDeath playerDeath = gameObject.GetComponent(typeof(PlayerDeath)) as PlayerDeath;
                 playerDeath.Spawnpoint = Spawnpoint;
