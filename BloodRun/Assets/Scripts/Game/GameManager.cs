@@ -50,6 +50,10 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
+                    PlayerMovement playerMovement = gameObject.GetComponent(typeof(PlayerMovement)) as PlayerMovement;
+
+                    Destroy(playerMovement);
+
                     gameObject.tag = "OtherPlayers";
                 }
 
