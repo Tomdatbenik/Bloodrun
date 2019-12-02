@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
                 PlayerUsername username = gameObject.GetComponent(typeof(PlayerUsername)) as PlayerUsername;
 
                 username.Username = player.username;
-
+                gameObject = Instantiate(gameObject);
                 if (player.username == connection.Username)
                 {
                     cam.Follow = gameObject.transform;
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
                 }
 
 
-                gameObject = Instantiate(gameObject);
+
                 gameObject.transform.position = new Vector3(float.Parse(player.transform.location.x), float.Parse(player.transform.location.y), float.Parse(player.transform.location.z));
                 gameObject.transform.rotation = new Quaternion(float.Parse(player.transform.rotation.x), float.Parse(player.transform.rotation.y), float.Parse(player.transform.rotation.z), float.Parse(player.transform.rotation.w));
 
