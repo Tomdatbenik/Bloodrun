@@ -8,12 +8,14 @@ public class GameManager : MonoBehaviour
 {
     private Connection connection;
 
+    public GameObject Spawnpoint;
     public GameObject Playerprefab;
 
     public GameObject AlwaysActiveTrap;
     public GameObject Darter;
     public GameObject RotatingDarter;
     public GameObject RotateTrap;
+    public GameObject Spiketrap;
 
     public CinemachineVirtualCamera cam;
 
@@ -54,6 +56,9 @@ public class GameManager : MonoBehaviour
                 gameObject.transform.position = new Vector3(float.Parse(player.transform.location.x), float.Parse(player.transform.location.y), float.Parse(player.transform.location.z));
                 gameObject.transform.rotation = new Quaternion(float.Parse(player.transform.rotation.x), float.Parse(player.transform.rotation.y), float.Parse(player.transform.rotation.z), float.Parse(player.transform.rotation.w));
 
+                PlayerDeath playerDeath = gameObject.GetComponent(typeof(PlayerDeath)) as PlayerDeath;
+                playerDeath.Spawnpoint = Spawnpoint;
+
                 players.Add(gameObject);
             }
         }
@@ -76,7 +81,7 @@ public class GameManager : MonoBehaviour
                     gameObject = Darter;
                     break;
                 case TrapType.SpikeTrap:
-                    gameObject = AlwaysActiveTrap;
+                    gameObject = Spiketrap;
                     break;
             }
 
