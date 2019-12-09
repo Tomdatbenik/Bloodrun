@@ -102,6 +102,8 @@ public class Connection : MonoBehaviour
         //Process codes
         Message msg = Message.FromJson(System.Text.Encoding.UTF8.GetString(Compressor.Decompress(received)));
 
+        Debug.Log(msg.content);
+
         //SetGame to message content
         if (msg != null)
         {
