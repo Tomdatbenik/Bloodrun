@@ -38,8 +38,6 @@ public class GameManager : MonoBehaviour
                 //look in properties who the player is.
                 PlayerUsername username = gameObject.GetComponent(typeof(PlayerUsername)) as PlayerUsername;
 
-                gameObject = Instantiate(gameObject);
-
                 username.Username = player.username;
 
                 if (player.username == connection.Username)
@@ -56,6 +54,8 @@ public class GameManager : MonoBehaviour
 
                     gameObject.tag = "OtherPlayers";
                 }
+
+                gameObject = Instantiate(gameObject);
 
                 gameObject.transform.position = new Vector3(float.Parse(player.transform.location.x), float.Parse(player.transform.location.y), float.Parse(player.transform.location.z));
                 gameObject.transform.rotation = new Quaternion(float.Parse(player.transform.rotation.x), float.Parse(player.transform.rotation.y), float.Parse(player.transform.rotation.z), float.Parse(player.transform.rotation.w));

@@ -28,7 +28,7 @@ public class LocationInfo
     {
         LocationInfo location = new LocationInfo();
 
-        location.x = (string)token.SelectToken("x");
+        location.x = (string)token.SelectToken("x");    
         location.y = (string)token.SelectToken("y");
         location.z = (string)token.SelectToken("z");
 
