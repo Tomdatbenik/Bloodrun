@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net;
 using System.Threading;
 using UnityEngine;
@@ -20,6 +21,7 @@ public class Connection : MonoBehaviour
 
     private void Start()
     {
+        CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
         receiveThread = new Thread(
         new ThreadStart(ReceiveDataUDP));
         receiveThread.IsBackground = true;
