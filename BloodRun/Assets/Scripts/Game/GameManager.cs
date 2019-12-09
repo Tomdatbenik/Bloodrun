@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
 
                     Destroy(playerMovement);
 
-                    gameObject.tag = "OtherPlayers";
+                    gameObject.tag = "OtherPlayer";
                 }
 
                 gameObject.transform.position = new Vector3(float.Parse(player.transform.location.x), float.Parse(player.transform.location.y), float.Parse(player.transform.location.z));
