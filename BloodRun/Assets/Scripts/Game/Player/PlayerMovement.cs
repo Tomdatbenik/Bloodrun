@@ -20,15 +20,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("RotateRight"))
-        {
-            transform.Rotate(new Vector3(0, -10, 0));
-        }
 
-        if (Input.GetButton("RotateLeft"))
-        {
-            transform.Rotate(new Vector3(0, 10, 0));
-        }
     }
 
     private void FixedUpdate()

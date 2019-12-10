@@ -46,9 +46,8 @@ public class GameManager : MonoBehaviour
                 gameObject = Instantiate(gameObject);
                 if (player.username == connection.Username)
                 {
-                    LookAtPoint point = gameObject.GetComponent(typeof(LookAtPoint)) as LookAtPoint;
-                    cam.Follow = point.LookatPoint.transform;
-                    cam.LookAt = point.LookatPoint.transform;
+                    cam.Follow = gameObject.transform;
+                    cam.LookAt = gameObject.transform;
                     gameObject.tag = "Player";
                 }
                 else
