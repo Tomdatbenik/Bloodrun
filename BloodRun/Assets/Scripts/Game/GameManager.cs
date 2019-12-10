@@ -144,15 +144,12 @@ public class GameManager : MonoBehaviour
             TrapInfo trapInfo = connection.game.GetTraps.Find(x => trap.id == x.id);
             trapInfo.trap = trap.trap;
 
-
-            Debug.Log(trap.type);
+            Debug.Log(trap.transform.rotation.y);
 
             switch (trap.type)
             {
                 case TrapType.RotateTrap:
-                    trap.trap.transform.Rotate(new Vector3(float.Parse(trap.transform.rotation.x), float.Parse(trap.transform.rotation.y), float.Parse(trap.transform.rotation.z)));
-
-                    Debug.Log(trap.transform.rotation.y);
+                    trap.trap.transform.rotation = transform.rotation = Quaternion.AngleAxis(float.Parse(trapInfo.transform.rotation.y), Vector3.up);
                     break;
                 //case TrapType.RotatingDarter:
                 //    gameObject = RotatingDarter;
