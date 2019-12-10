@@ -12,6 +12,8 @@ public class TrapInfo
     public TrapType type;
     public ScaleInfo scale;
 
+    public GameObject trap;
+
     public TrapInfo()
     {
         activated = false;

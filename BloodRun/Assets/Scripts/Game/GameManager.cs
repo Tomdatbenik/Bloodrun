@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     public List<GameObject> players;
     public List<GameObject> traps;
+
+    private List<TrapInfo> trapsInfos = new List<TrapInfo>();
     // Start is called before the first frame update
     void Start()
     {
@@ -102,6 +104,8 @@ public class GameManager : MonoBehaviour
             Debug.Log(trap.transform.location.x);
 
             traps.Add(gameObject);
+            trap.trap = gameObject;
+            trapsInfos.Add(trap);
         }
     }
 
@@ -134,5 +138,47 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        foreach(TrapInfo trap in trapsInfos)
+        {
+            TrapInfo trapInfo = connection.game.GetTraps.Find(x => trap.id == x.id);
+            trapInfo.trap = trap.trap;
+
+
+            Debug.Log(trap.type);
+
+            switch (trap.type)
+            {
+                case TrapType.RotateTrap:
+                    trap.trap.transform.Rotate(new Vector3(float.Parse(trap.transform.rotation.x), float.Parse(trap.transform.rotation.y), float.Parse(trap.transform.rotation.z)));
+
+                    Debug.Log(trap.transform.rotation.y);
+                    break;
+                //case TrapType.RotatingDarter:
+                //    gameObject = RotatingDarter;
+                //    break;
+                case TrapType.Darter:
+                    ShootDart shootDart = trapInfo.trap.GetComponent(typeof(ShootDart)) as ShootDart;
+                    if (trapInfo.activated)
+                    {
+                        shootDart.Shoot();
+                    }
+                    break;
+                case TrapType.SpikeTrap:
+                    TrapActivation trapActivation = trapInfo.trap.GetComponent(typeof(TrapActivation)) as TrapActivation;
+                    if (trapInfo.activated)
+                    {
+                        trapActivation.activate();
+                    }
+                    else
+                    {
+                        trapActivation.deActivate();
+                    }
+                    break;
+            }
+
+        }
+
+
     }
 }
